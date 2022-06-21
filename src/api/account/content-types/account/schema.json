@@ -75,6 +75,9 @@
       "relation": "manyToMany",
       "target": "api::post.post",
       "inversedBy": "likedUsers"
+    },
+    "displayPic": {
+      "type": "string"
     }
   }
 }
