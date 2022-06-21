@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "maxLength": 320
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::account.account",
+      "inversedBy": "ownedPost"
+    },
+    "mediaUrl": {
+      "type": "string"
+    },
+    "likeCount": {
+      "type": "biginteger"
+    },
+    "likedUsers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::account.account",
+      "mappedBy": "likedPosts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    }
+  }
+}

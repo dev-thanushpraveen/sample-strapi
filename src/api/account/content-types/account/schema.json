@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accounts",
+  "info": {
+    "singularName": "account",
+    "pluralName": "accounts",
+    "displayName": "account",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "account": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "userType": {
+      "type": "enumeration",
+      "enum": [
+        "fan",
+        "mentor",
+        "creator"
+      ]
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "DOB": {
+      "type": "date"
+    },
+    "expertiseIn": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "integer"
+    },
+    "isMentor": {
+      "type": "boolean"
+    },
+    "isFreelance": {
+      "type": "boolean"
+    },
+    "vipCode": {
+      "type": "string",
+      "private": true,
+      "unique": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "ownedPost": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "owner"
+    },
+    "likedPosts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "inversedBy": "likedUsers"
+    }
+  }
+}
